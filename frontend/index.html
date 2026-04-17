@@ -240,44 +240,55 @@
 
         <!-- Auth View -->
         <div id="auth-view">
-            <!-- Login Form -->
-            <div class="card" id="login-container">
-                <h2>Login</h2>
-                <form id="login-form">
-                    <div class="form-group">
-                        <label for="login-username">Username</label>
-                        <input type="text" id="login-username" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="login-password">Password</label>
-                        <input type="password" id="login-password" required>
-                    </div>
-                    <div id="login-error" class="error-msg"></div>
-                    <button type="submit">Login</button>
-                    <p class="toggle-link" onclick="toggleAuth('register')">Don't have an account? Register</p>
-                </form>
+            <!-- App Branding -->
+            <div style="text-align: center; margin: 3rem 0;">
+                <div style="display: inline-flex; align-items: center; justify-content: center; background: var(--primary); color: white; width: 64px; height: 64px; border-radius: 1rem; margin-bottom: 1rem; box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.4);">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                </div>
+                <h1 style="font-size: 2.5rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.5rem; letter-spacing: -0.025em;">Task Manager</h1>
+                <p style="color: var(--text-muted); font-size: 1.125rem;">The only tool you need to organize your life.</p>
             </div>
 
-            <!-- Register Form -->
-            <div class="card" id="register-container" style="display: none;">
-                <h2>Register</h2>
-                <form id="register-form">
-                    <div class="form-group">
-                        <label for="reg-username">Username</label>
-                        <input type="text" id="reg-username" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="reg-email">Email</label>
-                        <input type="email" id="reg-email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="reg-password">Password</label>
-                        <input type="password" id="reg-password" required>
-                    </div>
-                    <div id="reg-error" class="error-msg"></div>
-                    <button type="submit">Register</button>
-                    <p class="toggle-link" onclick="toggleAuth('login')">Already have an account? Login</p>
-                </form>
+            <div style="max-width: 450px; margin: 0 auto;">
+                <!-- Login Form -->
+                <div class="card" id="login-container">
+                    <h2>Welcome back</h2>
+                    <form id="login-form">
+                        <div class="form-group">
+                            <label for="login-username">Username</label>
+                            <input type="text" id="login-username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="login-password">Password</label>
+                            <input type="password" id="login-password" required>
+                        </div>
+                        <div id="login-error" class="error-msg"></div>
+                        <button type="submit" style="margin-top: 0.5rem; font-weight: bold;">Sign In</button>
+                        <p class="toggle-link" onclick="toggleAuth('register')">Don't have an account? Sign up</p>
+                    </form>
+                </div>
+
+                <!-- Register Form -->
+                <div class="card" id="register-container" style="display: none;">
+                    <h2>Create an account</h2>
+                    <form id="register-form">
+                        <div class="form-group">
+                            <label for="reg-username">Username</label>
+                            <input type="text" id="reg-username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="reg-email">Email</label>
+                            <input type="email" id="reg-email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="reg-password">Password</label>
+                            <input type="password" id="reg-password" required>
+                        </div>
+                        <div id="reg-error" class="error-msg"></div>
+                        <button type="submit" style="margin-top: 0.5rem; font-weight: bold;">Create Account</button>
+                        <p class="toggle-link" onclick="toggleAuth('login')">Already have an account? Sign In</p>
+                    </form>
+                </div>
             </div>
         </div>
 
