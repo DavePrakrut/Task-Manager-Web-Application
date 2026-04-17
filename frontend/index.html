@@ -128,6 +128,37 @@
             min-height: 1.25rem;
         }
 
+        /* Toast Notifications */
+        .toast-container {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            z-index: 50;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .toast {
+            padding: 1rem 1.5rem;
+            border-radius: 0.5rem;
+            color: white;
+            font-weight: 500;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            opacity: 0;
+            transform: translateY(1rem);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .toast-success { background-color: var(--success); }
+        .toast-error { background-color: var(--danger); }
+        .toast-info { background-color: var(--primary); }
+
         /* Views */
         #auth-view, #tasks-view {
             display: none;
@@ -232,6 +263,7 @@
     </style>
 </head>
 <body>
+    <div id="toast-container" class="toast-container"></div>
     <div class="container">
         <!-- Theme Toggle -->
         <div style="text-align: right; margin-bottom: 1rem;">
@@ -339,6 +371,25 @@
         const themeToggle = document.getElementById('theme-toggle');
 
         let currentFilter = null;
+
+        // Toast Notification System
+        function showToast(message, type = 'success') {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = `toast toast-${type}`;
+            toast.innerText = message;
+            
+            container.appendChild(toast);
+            
+            // Trigger animation
+            setTimeout(() => toast.classList.add('show'), 10);
+            
+            // Remove after 3 seconds
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
 
         // Theme Logic
         function setTheme(isDark) {
@@ -485,7 +536,7 @@
                     }),
                     noAuth: true
                 });
-                alert('Registration successful! Please login.');
+                showToast('Registration successful! Please login.', 'success');
                 toggleAuth('login');
                 registerForm.reset();
             } catch (err) {
@@ -514,7 +565,7 @@
             } catch (err) {
                 console.error(err);
                 if (err.message !== 'Unauthorized') {
-                    alert('Error loading tasks: ' + err.message);
+                    showToast('Error loading tasks: ' + err.message, 'error');
                 }
             }
         }
@@ -577,7 +628,7 @@
                 });
                 loadTasks(currentFilter);
             } catch (err) {
-                alert('Error updating task: ' + err.message);
+                showToast('Error updating task: ' + err.message, 'error');
             }
         }
 
@@ -589,7 +640,7 @@
                 });
                 loadTasks(currentFilter);
             } catch (err) {
-                alert('Error deleting task: ' + err.message);
+                showToast('Error deleting task: ' + err.message, 'error');
             }
         }
 
