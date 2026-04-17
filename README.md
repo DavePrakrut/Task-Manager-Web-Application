@@ -94,7 +94,8 @@ pytest tests/
 5. Render will automatically apply the configuration from `render.yaml` and deploy the application.
 6. The frontend needs point to the deployed Backend API in the JS code (update `const API` variable inside `frontend/index.html`).
 
-Live demo link: [Live Demo](#)
+## Live Demo!!
+👉 https://task-manager-web-application-ixb7.onrender.com/
 
 ## API Endpoints
 
