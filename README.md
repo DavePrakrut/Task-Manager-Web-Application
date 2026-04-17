@@ -96,6 +96,7 @@ pytest tests/
 
 ## Live Demo!!
 👉 https://task-manager-web-application-ixb7.onrender.com/
+[![Demo](https://img.shields.io/badge/Live-Demo-green)](https://task-manager-web-application-ixb7.onrender.com/)
 
 ## API Endpoints
 
